@@ -20,7 +20,7 @@ func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) 
 	return nil
 }
 
-func JsonHashS256(data any) (string, error) {
+func JsonHashS256(data interface{}) (string, error) {
 	if data == nil {
 		return "", errors.New("data is nil")
 	}
@@ -42,7 +42,7 @@ func JsonHashS256(data any) (string, error) {
 	return base64.StdEncoding.EncodeToString(h.Sum(nil)), nil
 }
 
-func ParseRequest(data string, obj any) error {
+func ParseRequest(data string, obj interface{}) error {
 	if data == "" {
 		return errors.New("data is empty")
 	}
